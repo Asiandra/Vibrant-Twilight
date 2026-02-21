@@ -369,10 +369,8 @@
     <!-- Lightbox Overlay -->
     <div id="lightbox" onclick="closeLightbox()">
         <div class="close-lightbox">✕</div>
-        <div id="lightbox-content-wrapper" onclick="event.stopPropagation()">
-            <img id="lightbox-img" src="" alt="Full Size Image">
-            <div id="lightbox-caption">Full Image View</div>
-        </div>
+        <img id="lightbox-img" src="" alt="Full Size Image" onclick="event.stopPropagation()">
+        <div id="lightbox-caption"></div>
     </div>
 
     <!-- Character Grid -->
@@ -389,7 +387,7 @@
 
         <!-- Vibrant Twilight -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto mb-12">
-            <div class="char-card" onclick="showProfile('aoyagi-touya', '#5DA4EE80')">
+            <div class="char-card" onclick="showProfile('touya', '#5DA4EE80')">
                 <div class="char-overlay" style="background-color: #5DA4EE;"></div>
                 <img src="https://i.postimg.cc/WpGvxrdn/Touya_Image.png?text=Aoyagi-Touya" class="char-image">
                 <div class="char-names-container">
@@ -397,8 +395,8 @@
                     <span class="japanese-name">青柳 冬弥</span>
                 </div>
             </div>
-            <div class="char-card" onclick="showProfile('mafuyu', '#8889CC80')">
-                <div class="char-overlay" style="background-color: #8889CC;"></div>
+            <div class="char-card" onclick="showProfile('mafuyu', '#8888CC80')">
+                <div class="char-overlay" style="background-color: #8888CC;"></div>
                 <img src="https://i.postimg.cc/FHB50V6R/Mafuyu_Image.png?text=Asahina-Mafuyu" class="char-image">
                 <div class="char-names-container">
                     <div class="char-info-box"><span class="english-name">Asahina Mafuyu</span></div>
@@ -507,8 +505,8 @@
                             <div class="app-cell stat-label-cell">Members</div>
                             <div class="app-cell">
                                 <div class="flex flex-wrap gap-1">
-                                    <span class="yeetus" style="color: #5DA4EE;" onclick="showProfile('aoyagi-touya', '#5DA4EE80')">Touya</span>, 
-                                    <span class="yeetus" style="color: #8889CC;" onclick="showProfile('mafuyu', '#8889CC80')">Mafuyu</span>, 
+                                    <span class="yeetus" style="color: #5DA4EE;" onclick="showProfile('touya', '#5DA4EE80')">Touya</span>, 
+                                    <span class="yeetus" style="color: #8888CC;" onclick="showProfile('mafuyu', '#8888CC80')">Mafuyu</span>, 
                                     <span class="yeetus" style="color: #A7E2DF;" onclick="showProfile('shizuku', '#A7E2DF80')">Shizuku</span>, 
                                     <span class="yeetus" style="color: #FFD55D;" onclick="showProfile('tsukasa', '#FFD55D80')">Tsukasa</span>
                                 </div>
@@ -534,7 +532,7 @@
                     <div class="mb-8">
                         <span class="section-label">BACKGROUND</span>
                         <p class="text-gray-600 leading-relaxed mb-4">
-                            <span class="yeetus" style="color: #5DA4EE;" onclick="showProfile('aoyagi-touya', '#5DA4EE80')">Aoyagi Touya</span>, <span class="yeetus" style="color: #A7E2DF;" onclick="showProfile('shizuku', '#A7E2DF80')">Hinomori Shizuku</span>, and <span class="yeetus" style="color: #FFD55D;" onclick="showProfile('tsukasa', '#FFD55D80')">Tenma Tsukasa</span> had been friends since childhood, however, they didn't often sing together, Tsukasa being unable to sing at all. The trio met <span class="yeetus" style="color: #8889CC;" onclick="showProfile('mafuyu', '#8889CC80')">Asahina Mafuyu</span> in high school, who was the one who initially proposed the idea of becoming a band to Touya and Shizuku, the three inviting Tsukasa to join later on. Throughout the year, Tsukasa became more distant, and Mafuyu eventually had to move away, leaving only Touya and Shizuku.
+                            <span class="yeetus" style="color: #5DA4EE;" onclick="showProfile('touya', '#5DA4EE80')">Aoyagi Touya</span>, <span class="yeetus" style="color: #A7E2DF;" onclick="showProfile('shizuku', '#A7E2DF80')">Hinomori Shizuku</span>, and <span class="yeetus" style="color: #FFD55D;" onclick="showProfile('tsukasa', '#FFD55D80')">Tenma Tsukasa</span> had been friends since childhood, however, they didn't often sing together, Tsukasa being unable to sing at all. The trio met <span class="yeetus" style="color: #8888CC;" onclick="showProfile('mafuyu', '#8888CC80')">Asahina Mafuyu</span> in high school, who was the one who initially proposed the idea of becoming a band to Touya and Shizuku, the three inviting Tsukasa to join later on. Throughout the year, Tsukasa became more distant, and Mafuyu eventually had to move away, leaving only Touya and Shizuku.
                         </p>
                         <p class="text-gray-600 leading-relaxed">
                             One day, as Touya aimlessly scrolled through his phone, reminiscing about the time he had spent with the others, he found a file named "Untitled." He had initially planned to delete the file, as it hadn't been uncommon for him to find files with the same name, but his hand had slipped, and he had accidentally played the file, which had transported him to the Cottage Sekai. He had met <span style='color:#3CB; font-weight: bold;'>Hatsune Miku</span> and <span style='color:#FE1; font-weight: bold;'>Kagamine Len</span>, who had invited him for a chat.
@@ -561,7 +559,7 @@
         </div>
 
         <!-- Touya Profile -->
-        <div id="aoyagi-touya" class="profile-container">
+        <div id="touya" class="profile-container">
             <div class="the-bg-thing p-6 md:p-10 flex flex-col md:flex-row gap-10" style="border-left: 10px solid #5DA4EE;">
                 
                 <div class="w-full md:w-1/3">
@@ -591,23 +589,23 @@
                         </div>
                         <div class="app-row">
                             <div class="app-cell stat-label-cell">Hobbies</div>
-                            <div class="app-cell">Gaming, Art, Writing</div>
+                            <div class="app-cell">Gaming<br>Art<br>Writing</div>
                         </div>
                         <div class="app-row">
                             <div class="app-cell stat-label-cell">Specialty</div>
-                            <div class="app-cell">Violin, Programming</div>
+                            <div class="app-cell">Violin<br>Programming</div>
                         </div>
                         <div class="app-row">
-                            <div class="app-cell stat-label-cell">Likes</div>
+                            <div class="app-cell stat-label-cell">Favorite Food</div>
                             <div class="app-cell">Noodles</div>
                         </div>
                         <div class="app-row">
-                            <div class="app-cell stat-label-cell">Least Fav Food</div>
-                            <div class="app-cell">Honey, Onions</div>
+                            <div class="app-cell stat-label-cell">Least Favorite Food</div>
+                            <div class="app-cell">Honey<br>Onions</div>
                         </div>
                         <div class="app-row">
                             <div class="app-cell stat-label-cell">Dislikes</div>
-                            <div class="app-cell">School, Public speaking</div>
+                            <div class="app-cell">School<br>Public speaking</div>
                         </div>
                         <div class="app-row">
                             <div class="app-cell stat-label-cell">Image Color</div>
@@ -660,7 +658,7 @@
                     <h2 class="text-5xl font-black mb-1 uppercase tracking-tighter">Aoyagi Touya</h2>
                     <p class="font-bold mb-4" style="color: #5DA4EE;">LEADER / ILLUSTRATOR</p>
 
-                    <div class="quotie">
+                    <div class="quotie" style="border-color: #5DA4EE;">
                         “ It must be nice, having a dream to work towards. ”
                     </div>
 
@@ -670,7 +668,7 @@
                           Touya, <span class="yeetus" style="color: #A7E2DF;" onclick="showProfile('shizuku', '#A7E2DF80')">Shizuku</span>, and <span class="yeetus" style="color: #FFD55D;" onclick="showProfile('tsukasa', '#FFD55D80')">Tsukasa</span> had been friends since childhood, though their time was limited to school. In middle school, Touya became friends with a group called <span style="color: #6D3F5B; font-weight: bold;">Darkilight</span>, but they caused Touya's relationship with Shizuku to become strained, especially after a conflict between Shizuku and <span style="color: #BB4B3E; font-weight: bold;">Diluc</span>, a former close friend of Darkilight's. Around the same time, Tsukasa began to grow more distant.
                         </p>
                       <p class="text-gray-600 leading-relaxed mt-4">
-                        In an attempt to fix their friendship, Touya decided to push away Darkilight and invited Tsukasa out more, but his efforts were met with little success. After Darkilight faced some internal conflict and eventually disbanded, Touya attempted to reconnect with two of its former members, <span style="color: #E4A8CA; font-weight: bold;">Mizuki</span> and <span style="color: #CC659C; font-weight: bold;">Kohane</span>. However, their bad reputation among Touya's other friends made it difficult to connect with Touya's other friends. As a result, Touya, Shizuku, and <span class="yeetus" style="color: #8889CC;" onclick="showProfile('mafuyu', '#8889CC80')">Mafuyu</span> invited Tsukasa to join Vibrant Twilight instead. Despite their efforts, Tsukasa remained distant, their bond further straining when Mafuyu moved away, leaving only Touya and Shizuku. Things slowly improved between them when Touya discovered the Cottage Sekai.
+                        In an attempt to fix their friendship, Touya decided to push away Darkilight and invited Tsukasa out more, but his efforts were met with little success. After Darkilight faced some internal conflict and eventually disbanded, Touya attempted to reconnect with two of its former members, <span style="color: #E4A8CA; font-weight: bold;">Mizuki</span> and <span style="color: #CC659C; font-weight: bold;">Kohane</span>. However, their bad reputation among Touya's other friends made it difficult to connect with Touya's other friends. As a result, Touya, Shizuku, and <span class="yeetus" style="color: #8888CC;" onclick="showProfile('mafuyu', '#8888CC80')">Mafuyu</span> invited Tsukasa to join Vibrant Twilight instead. Despite their efforts, Tsukasa remained distant, their bond further straining when Mafuyu moved away, leaving only Touya and Shizuku. Things slowly improved between them when Touya discovered the Cottage Sekai.
                         </p>
                     </div>
 
@@ -701,6 +699,143 @@
                         <li>Despite having glasses, he rarely ever wears them, as they give him a headache and make his eyes dry.</li>
                         <li>He played violin for four years before quitting.</li>
                         <li>Rather than energizing him, caffeine makes him tired, with energy drinks giving him chest pain and causing him to shake as well. Despite this, he frequently drinks soda. </li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Mafuyu Profile -->
+        <div id="mafuyu" class="profile-container">
+            <div class="the-bg-thing p-6 md:p-10 flex flex-col md:flex-row gap-10" style="border-left: 10px solid #8888CC;">
+                
+                <div class="w-full md:w-1/3">
+                    <div class="character-art-preview border-4 border-gray-50 shadow-2xl" onclick="openLightbox('https://i.postimg.cc/wMCg5cMt/Mafuyu_Shush.png', 'Mafuyu Shush')">
+                        <img src="https://i.postimg.cc/wMCg5cMt/Mafuyu_Shush.png" class="character-art-full">
+                    </div>
+
+                    <div class="profile-info">
+                        <div class="app-row app-header">
+                            <div class="app-cell" style="grid-column: span 2;">Profile</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Gender</div>
+                            <div class="app-cell">Cisgender Female</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Pronouns</div>
+                            <div class="app-cell">She/They</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Birthday</div>
+                            <div class="app-cell">November 4</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Height</div>
+                            <div class="app-cell">5'5"</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Hobbies</div>
+                            <div class="app-cell">Writing lyrics</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Specialty</div>
+                            <div class="app-cell">Viola</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Favorite Food</div>
+                            <div class="app-cell">Anything</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Least Favorite Food</div>
+                            <div class="app-cell">Bitter foods</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Dislikes</div>
+                            <div class="app-cell">Parents<br>Homework<br>Hypocrisy</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Image Color</div>
+                            <div class="app-cell flex items-center gap-2">
+                                <div style="width: 12px; height: 12px; border-radius: 50%; background: #8888CC;"></div>
+                                #8888CC<br>
+                                Wisteria
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <div class="appellations">
+                            <div class="app-row app-header">
+                                <div class="app-cell" style="grid-column: span 2;">Appellations</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Mafuyu</div>
+                                <div class="app-cell">Touya</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Touya-chan</div>
+                                <div class="app-cell">Shizuku</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Asahina</div>
+                                <div class="app-cell">Tsukasa</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Asahina-san</div>
+                                <div class="app-cell">Akito, Kohane, Mizuki</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Mafii-chan</div>
+                                <div class="app-cell">Rui</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-2/3">
+                    <h2 class="text-5xl font-black mb-1 uppercase tracking-tighter">Asahina Mafuyu</h2>
+                    <p class="font-bold mb-4" style="color: #8888CC;">LYRICIST</p>
+
+                    <div class="mb-8">
+                        <span class="section-label">BACKGROUND</span>
+                        <p class="text-gray-600 leading-relaxed">
+                          Throughout her childhood, Mafuyu's family frequently moved due to work. They settled for four years in one place, however, they ended up moving again to <span class="yeetus" style="color: #5DA4EE;" onclick="showProfile('touya', '#5DA4EE80')">Touya</span>'s hometown. Devastated, Mafuyu withdrew emotionally, adopting a "Good Girl" persona that focused on her academic excellence. As a freshman, she tutored her peers and received straight A's, hiding her pain behind a facade of perfection.
+                          </p>
+                          <p class="text-gray-600 leading-relaxed">
+                            Through a shared interest of orchestra and mutual dislike of their orchestra teacher, she eventually met Touya, <span class="yeetus" style="color: #A7E2DF;" onclick="showProfile('shizuku', '#A7E2DF80')">Shizuku</span>, and <span class="yeetus" style="color: #FFD55D;" onclick="showProfile('tsukasa', '#FFD55D80')">Tsukasa</span>, all of whom she suggested creating a band with. Vibrant Twilight was a way for her to finally show her true self and drop the "Good Girl" persona she had kept up for many months.
+                        </p>
+                      <p class="text-gray-600 leading-relaxed mt-4">
+                        However, Mafuyu's hopes of having friends and feeling better were crushed when she learned she was moving away once again. Despite keeping as much contact with Shizuku and Touya as she could, she slipped back into her "Good Girl" persona, burying her depression that gnawed at her at every waking moment.
+                        </p>
+                    </div>
+
+                    <div class="mb-8">
+                        <span class="section-label">APPEARANCE</span>
+                        <div>
+                            <p>Mafuyu has dark purple hair with eyes that fade from dark purple to sky blue in a gradient. Her hair is wavy, long, and usually kept in a braid held together by a black hair tie. Mafuyu’s bangs are fairly long with the middle section falling just a bit past her eyes. She has an ahoge that swoops to the right above her bangs, and her face is framed by short, slightly curled strands on each side.</p>
+                            <span class="sub-label" style="border-color: #8888CC;">Casual Outfit</span>
+                            <p class="text-gray-600 leading-relaxed mt-2">
+                                Her casual outfit consists of a dark blue jacket. She wears a gray shirt underneath and has black leggings. She has a silver moon necklace that matches with Touya and Shizuku. She wears a purple BFF bracelet and a black and blue bracelet that spells out "BUBBLES" and a Bubbles charm on it, also matching with Touya and Shizuku.</p>
+                            <span class="sub-label" style="border-color: #8888CC;">Unit Outfit</span>
+                            <p class="text-gray-600 leading-relaxed mt-2">Work in progress...</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <span class="section-label">PERSONALITY</span>
+                        <p class="text-gray-600 leading-relaxed">
+                            Mafuyu's "Good Girl" persona is often shy, and she tends to act as a teacher's pet. Her voice becomes unnaturally high-pitched and forced, frequently spaceing out to conserve the energy needed to maintain this facade.
+When Mafuyu is around the people she truly cares about, she becomes more extroverted and energetic to the point she's unaware of what she says. When she's feeling upset while with her friends, she becomes quiet and somber, often blunt or unintentionally offensive. However, hearing her friends' voices usually helps lift her mood and re-energizes her.
+When Mafuyu realizes she's hurt someone she cares about, she quickly becomes apologetic and withdraws, shutting down emotionally. She often reverts to her "Good Girl" persona as a way to hide her feelings. The only person who knows how to help her in this state is Touya.
+                        </p>
+                    </div>
+
+                    <div class="mb-8">
+                      <span class="section-label">MORE INFORMATION</span>
+                      <ul class="text-gray-600 leading-relaxed list-disc ml-5">
+                        <li>Work in progress</li>
                       </ul>
                     </div>
                 </div>
