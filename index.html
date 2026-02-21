@@ -6,11 +6,21 @@
   <title>Vibrant Twilight</title>
   <link rel="icon" type="image/png" href="https://i.postimg.cc/vZwTn94f/Favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,900;1,400&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <style>
+
+    * {
+      font-weight: 400;
+    }
+
+    h1, h2, .font-black, .font-bold, .section-label, .english-name, .yeetus, b, strong, .stat-label-cell, .app-header {
+      font-weight: 700 !important;
+    }
+    
     body {
       background-color: rgba(42, 39, 51, 1);
       font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+      font-weight: 400;
       color: #ccc;
       overflow-x: hidden;
       transition: background-color 0.5s ease;
@@ -205,11 +215,9 @@
         }
 
         .stat-label-cell {
-            font-weight: 800;
-            color: #aaa;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            background: rgba(240, 240, 240, 0.4);
+            font-weight: bold;
+            font-size: 0.85rem;
+            background: f0f0f0;
             border-right: 1px solid #eee;
         }
 
@@ -569,7 +577,7 @@
 
                     <div class="profile-info">
                         <div class="app-row app-header">
-                            <div class="app-cell" style="grid-column: span 2;">Profile</div>
+                            <div class="app-cell" style="grid-column: span 2; font-weight: 700;">Profile</div>
                         </div>
                         <div class="app-row">
                             <div class="app-cell stat-label-cell">Gender</div>
@@ -620,34 +628,34 @@
                     <div class="mt-6">
                         <div class="appellations">
                             <div class="app-row app-header">
-                                <div class="app-cell" style="grid-column: span 2;">Appellations</div>
+                                <div class="app-cell" style="grid-column: span 2; font-weight: 700;">Appellations</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Touya</div>
+                                <div class="app-cell stat-label-cell">Touya</div>
                                 <div class="app-cell">Akito, Kotaro, Shizuku</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Touya-kun</div>
+                                <div class="app-cell stat-label-cell">Touya-kun</div>
                                 <div class="app-cell">Mafuyu, Mizuki</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Touya-senpai</div>
+                                <div class="app-cell stat-label-cell">Touya-senpai</div>
                                 <div class="app-cell">Tsukasa</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Aoyagi</div>
+                                <div class="app-cell stat-label-cell">Aoyagi</div>
                                 <div class="app-cell">Riho</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Aoyagi-kun</div>
+                                <div class="app-cell stat-label-cell">Aoyagi-kun</div>
                                 <div class="app-cell">An, Emu, Ena, Kohane, Rui</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Aoyagi-san</div>
+                                <div class="app-cell stat-label-cell">Aoyagi-san</div>
                                 <div class="app-cell">Airi, Diluc, Honami, Ichika, Minori</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Tuuya</div>
+                                <div class="app-cell stat-label-cell">Tuuya</div>
                                 <div class="app-cell">Haruka, Nene</div>
                             </div>
                         </div>
@@ -660,6 +668,10 @@
 
                     <div class="quotie" style="border-color: #5DA4EE;">
                         “ It must be nice, having a dream to work towards. ”
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="text-gray-600 leading-relaxed"><b>Aoyagi Touya</b> <i>(青柳冬弥)</i> is a senior at Kamiyama High School. He is the leader and illustrator of Vibrant Twilight, going by the aliases "Kaveh" and "Ajax".</p>
                     </div>
 
                     <div class="mb-8">
@@ -717,7 +729,7 @@
 
                     <div class="profile-info">
                         <div class="app-row app-header">
-                            <div class="app-cell" style="grid-column: span 2;">Profile</div>
+                            <div class="app-cell" style="grid-column: span 2; font-weight: 700;">Profile</div>
                         </div>
                         <div class="app-row">
                             <div class="app-cell stat-label-cell">Gender</div>
@@ -768,26 +780,26 @@
                     <div class="mt-6">
                         <div class="appellations">
                             <div class="app-row app-header">
-                                <div class="app-cell" style="grid-column: span 2;">Appellations</div>
+                                <div class="app-cell" style="grid-column: span 2; font-weight: 700;">Appellations</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Mafuyu</div>
+                                <div class="app-cell stat-label-cell">Mafuyu</div>
                                 <div class="app-cell">Touya</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Touya-chan</div>
+                                <div class="app-cell" style="font-weight: 700;">Mafuyu-chan</div>
                                 <div class="app-cell">Shizuku</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Asahina</div>
+                                <div class="app-cell stat-label-cell">Asahina</div>
                                 <div class="app-cell">Tsukasa</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Asahina-san</div>
+                                <div class="app-cell stat-label-cell">Asahina-san</div>
                                 <div class="app-cell">Akito, Kohane, Mizuki</div>
                             </div>
                             <div class="app-row">
-                                <div class="app-cell">Mafii-chan</div>
+                                <div class="app-cell stat-label-cell">Mafii-chan</div>
                                 <div class="app-cell">Rui</div>
                             </div>
                         </div>
@@ -797,6 +809,10 @@
                 <div class="w-full md:w-2/3">
                     <h2 class="text-5xl font-black mb-1 uppercase tracking-tighter">Asahina Mafuyu</h2>
                     <p class="font-bold mb-4" style="color: #8888CC;">LYRICIST</p>
+
+                    <div class="mb-8">
+                        <p class="text-gray-600 leading-relaxed"><b>Asahina Mafuyu</b> <i>(朝比奈まふゆ)</i> is a junior. She is the lyricist of Vibrant Twilight, going by the aliases "Luna" and "Yuki".</p>
+                    </div>
 
                     <div class="mb-8">
                         <span class="section-label">BACKGROUND</span>
@@ -836,6 +852,163 @@ When Mafuyu realizes she's hurt someone she cares about, she quickly becomes apo
                       <span class="section-label">MORE INFORMATION</span>
                       <ul class="text-gray-600 leading-relaxed list-disc ml-5">
                         <li>Work in progress</li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shizuku Profile -->
+        <div id="shizuku" class="profile-container">
+            <div class="the-bg-thing p-6 md:p-10 flex flex-col md:flex-row gap-10" style="border-left: 10px solid #A7E2DF;">
+                
+                <div class="w-full md:w-1/3">
+                    <div class="character-art-preview border-4 border-gray-50 shadow-2xl" onclick="openLightbox('https://i.postimg.cc/FzMNbgz7/Shizuku_Erm.png', 'Shizuku Erm)">
+                        <img src="https://i.postimg.cc/FzMNbgz7/Shizuku_Erm.png" class="character-art-full">
+                    </div>
+
+                    <div class="profile-info">
+                        <div class="app-row app-header">
+                            <div class="app-cell" style="grid-column: span 2; font-weight: 700;">Profile</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Gender</div>
+                            <div class="app-cell">Nonbinary</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Pronouns</div>
+                            <div class="app-cell">They/Them</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Birthday</div>
+                            <div class="app-cell">August 22</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Height</div>
+                            <div class="app-cell">5'9"</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Hobbies</div>
+                            <div class="app-cell">Drawing<br>Editing<br>Writing</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Specialty</div>
+                            <div class="app-cell">Viola</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Favorite Food</div>
+                            <div class="app-cell">None</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Least Favorite Food</div>
+                            <div class="app-cell">A list of foods</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Dislikes</div>
+                            <div class="app-cell">Rude / Fake people</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Image Color</div>
+                            <div class="app-cell flex items-center gap-2">
+                                <div style="width: 12px; height: 12px; border-radius: 50%; background: #A7E2DF;"></div>
+                                #A7E2DF<br>
+                                Pastel Blue-Green
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <div class="appellations">
+                            <div class="app-row app-header">
+                                <div class="app-cell" style="grid-column: span 2; font-weight: 700;">Appellations</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell stat-label-cell">Shizuku</div>
+                                <div class="app-cell">An, Touya</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell stat-label-cell">Shizuku-chan</div>
+                                <div class="app-cell">Ichika, Mafuyu, Minori</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell stat-label-cell">Shizuku-kun</div>
+                                <div class="app-cell">Tsukasa, Rui</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell stat-label-cell">Shizuku-san</div>
+                                <div class="app-cell">Akito</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell stat-label-cell">Hinomori-chan</div>
+                                <div class="app-cell">Mizuki, Kohane</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell stat-label-cell">Hinomori-kun</div>
+                                <div class="app-cell"> Nene</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell stat-label-cell">Shizuk</div>
+                                <div class="app-cell">Touya</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell stat-label-cell">Shizuku Wizuku</div>
+                                <div class="app-cell">Mafuyu, Touya</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-2/3">
+                    <h2 class="text-5xl font-black mb-1 uppercase tracking-tighter">Hinomori Shizuku</h2>
+                    <p class="font-bold mb-4" style="color: #A7E2DF;">VOCALIST</p>
+
+                    <div class="mb-8">
+                        <p class="text-gray-600 leading-relaxed"><b>Hinomori Shizuku</b> <i>(日野森雫)</i> is a senior at Kamiyama High School. They are a vocalist of Vibrant Twilight, going by the alias "Steph".</p>
+                    </div>
+
+                    <div class="mb-8">
+                        <span class="section-label">BACKGROUND</span>
+                        <p class="text-gray-600 leading-relaxed">
+                          Shizuku became friends with <span class="yeetus" style="color: #5DA4EE;" onclick="showProfile('touya', '#5DA4EE80')">Touya</span> back in elementary school, their friendship deepening when he introduced them to <span class="yeetus" style="color: #FFD55D;" onclick="showProfile('tsukasa', '#FFD55D80')">Tsukasa</span> in middle school. However, their relationship became strained after Touya got involved with a group going by the name <span style="color: #6D3F5B; font-weight: bold;">Darkilight</span> and their friends, leading him to become more distant. Shizuku attempted to fix their friendship, but conflicts with Darkilight, particularly an incident with one of their close friends, <span style="color: #BB4B3E; font-weight: bold;">Diluc</span>, made it difficult. This incident caused most of Darkilight and its outside friends, except for Touya, to despise Shizuku.
+                        </p>
+                      <p class="text-gray-600 leading-relaxed mt-4">
+                        Rather than trying to connect with Darkilight again, Shizuku and Touya decided to form their own group, Vibrant Twilight, with <span class="yeetus" style="color: #8888CC;" onclick="showProfile('mafuyu', '#8888CC80')">Mafuyu</span>, later inviting Tsukasa to join as well. Despite their efforts, Tsukasa remained distant, their bond further straining when Mafuyu moved away, leaving only Shizuku and Touya. After Darkilight eventually disbanded due to internal conflict, Shizuku saw an opportunity to reconnect with two of Darkilight's former members, <span style="color: #E4A8CA; font-weight: bold;">Mizuki</span> and <span style="color: #CC659C; font-weight: bold;">Kohane</span>.
+                        </p>
+                    </div>
+
+                    <div class="mb-8">
+                        <span class="section-label">APPEARANCE</span>
+                        <div>
+                            <p>Shizuku has light blue eyes and long, light blue hair, worn up in a bun held up by a purple hair tie, with some stray strands covering their face. They have a beauty mark near the right corner of their lip.</p>
+                            <span class="sub-label" style="border-color: #A7E2DF;">Casual Outfit</span>
+                            <p class="text-gray-600 leading-relaxed mt-2">
+                              They wear purple t-shirts and loose dark-blue jeans. They wear a Cinnamoroll necklace that matches with Touya, a gold sun necklace that matches with both Touya and Mafuyu, and black sneakers with white undertones. They wear a blue BFF bracelet and a black and pink bracelet with "BLOSSOM" spelled out and a Blossom charm on it, also matching with Touya and Mafuyu.<br><br>In winter, they wear a dark teal blue sweater underneath a black jacket with gold accents and loose light-blue jeans.</p>
+                            <span class="sub-label" style="border-color: #A7E2DF;">Unit Outfit</span>
+                            <p class="text-gray-600 leading-relaxed mt-2">Work in progress...</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <span class="section-label">PERSONALITY</span>
+                        <p class="text-gray-600 leading-relaxed">
+                            Shizuku is an introvert who struggles to communicate with those they're unfamiliar with, but becomes open and talkative around their friends. Though kind-hearted and understanding, Shizuku tends to hide their own feelings, a result of their deep-rooted trust issues. They often put the needs of others before themselves, sometimes to the point of neglecting their own well-being.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                          Seen as the "therapist friend" in their friend groups, offering advice and support when they can. Despite their nurturing nature, they often hide their own feelings, struggling to trust people in the fear they will leave them.
+                        </p>
+                      <p class="text-gray-600 leading-relaxed">
+When they want to, Shizuku is a hardworking person, often to the point of overworking themselves. Even if they don't show it, they care deeply for their friends, family, and boyfriend.
+                        </p>
+                    </div>
+
+                    <div class="mb-8">
+                      <span class="section-label">MORE INFORMATION</span>
+                      <ul class="text-gray-600 leading-relaxed list-disc ml-5">
+                        <li>Shizuku's MBTI is ENFP-T (INFP-T).</li>
+                        <li>Their strongest subjects in school are science and english, while their weakest is math and finds history boring.</li>
+                        <li>Shizuku enjoys going to school to see their friends, but despises having to see people they don't get along with.</li>
+                        <li>Similar to Touya, caffeine makes Shizuku tired.
+</li>
                       </ul>
                     </div>
                 </div>
