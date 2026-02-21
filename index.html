@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: #000;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Showcase - Vivid Style</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,900;1,400&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgba(42, 39, 51, 1);
+      font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+      color: #ccc;
+      overflow-x: hidden;
+      transition: background-color 0.5s ease;
+      min-height: 100vh;
+    }
+    
+    /* Header */
+    .header-icon {
+      width: 180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    .header-icon.no-click {
+      cursor: default;
+    }
+    
+    .vs-logo img {
+      filter: invert(1) brightness(2);
+    }
+    
+    .header-icon:hover {
+      transform: scale(1.08);
+    }
+    
+    .header-icon img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    
+    /* Character Cards */
+    .char-card {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: #c0c0c080;
+      aspect-ratio: 2/4;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    
+    .char-card:hover {
+      transform: scale(1.05);
+      z-index: 20;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+     }
+    
+    .char-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      clip-path: polygon(0 25%, 100% 0, 100% 100%, 0% 100%);
+      z-index: 5; 
+      opacity: 0.85;
+    }
+    
+    .char-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2;
+    }
+    
+    .char-info-box {
+      position: relative;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.85);
+      margin: 5px;
+      padding: 4px;
+      color: white;
+      text-align: center;
+    }
+    
+    .english-name {
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 900;
+      display: block;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      line-height: 1;
+    }
+    
+    .japanese-name {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #1a1a1a; 
+      display: block;
+      margin-top: 7.5px;
+      margin-bottom: 5px;
+      line-height: 1;
+    }
+    
+    .char-names-container {
+      position: relative;
+      z-index: 10;
+      margin: 5px;
+      text-align: center;
+    }
+    
+    /* Profile */
+    .profile-container {
+      display: none;
+      animation: fadeIn 0.4s ease-out;
+    }
+    
+    .profile-container.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+        .the-bg-thing {
+            background: #ffffffc0;
+            color: #333;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .character-art-preview {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            cursor: zoom-in;
+        }
+
+        .character-art-full {
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .character-art-preview:hover .character-art-full {
+            transform: scale(1.05);
+        }
+
+        .profile-info {
+            background: #ffffffc0;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+
+        .appellations {
+            background: #ffffffc0;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .app-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid #eee;
+        }
+
+        .app-row:last-child { border-bottom: none; }
+
+        .app-cell {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .app-header {
+            background: #f0f0f0;
+            font-weight: bold;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .stat-label-cell {
+            font-weight: 800;
+            color: #aaa;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            background: rgba(240, 240, 240, 0.4);
+            border-right: 1px solid #eee;
+        }
+
+        .section-label {
+            background: #000;
+            color: #fff;
+            display: inline-block;
+            padding: 4px 24px;
+            transform: skewX(-15deg);
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .sub-label {
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            border-bottom: 3px solid;
+            padding-right: 15px;
+        }
+
+        .quotie {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: #555;
+            border-left: 4px solid #5DA4EE;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .return-btn {
+            background: #000;
+            color: white;
+            padding: 10px 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            transform: skewX(-15deg);
+            transition: all 0.2s;
+            display: inline-block;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+        
+        .return-btn:hover {
+            background: #333;
+            transform: skewX(-15deg) scale(1.05);
+        }
+
+        /* Links to another person */
+        .yeetus {
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .yeetus:hover {
+            text-decoration: underline;
+        }
+
+        /* View Full Image */
+        #lightbox {
+            visibility: hidden;
+            opacity: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            cursor: zoom-out;
+            transition: opacity 0.4s ease, visibility 0.4s;
+        }
+
+        #lightbox.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #lightbox-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 100%;
+            max-height: 100%;
+            transform: translateY(30px);
+            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        #lightbox.active #lightbox-content-wrapper {
+            transform: translateY(0);
+        }
+
+        #lightbox-img {
+            max-width: 95vw;
+            max-height: 80vh;
+            object-fit: contain;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+            cursor: default;
+        }
+
+        #lightbox-caption {
+            margin-top: 20px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 24px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: black;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 101;
+            transition: transform 0.2s;
+        }
+
+        .close-lightbox:hover {
+            transform: rotate(90deg);
+        }
+
+        .hidden { display: none !important; }
+  </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <div class="close-lightbox">✕</div>
+        <div id="lightbox-content-wrapper" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Full Size Image">
+            <div id="lightbox-caption">Full Image View</div>
+        </div>
+    </div>
+
+    <!-- Character Grid -->
+    <div id="selection-grid" class="max-w-6xl mx-auto mb-12">
+        <header class="text-center mb-8">
+            <div class="header-icon" onclick="showProfile('home', '#AA9FD080')">
+                <img src="https://i.postimg.cc/Gt1L0xPK/Vibrant_Twilight_Logo.png" alt="Vibrant Twilight Logo">
+            </div>
+        </header>
+
+        <div class="text-center mb-10">
+            <p class="text-gray-400">Description</p>
+        </div>
+
+        <!-- Vibrant Twilight -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto mb-12">
+            <div class="char-card" onclick="showProfile('aoyagi-touya', '#5DA4EE80')">
+                <div class="char-overlay" style="background-color: #5DA4EE;"></div>
+                <img src="https://i.postimg.cc/WpGvxrdn/Touya_Image.png?text=Aoyagi-Touya" class="char-image">
+                <div class="char-names-container">
+                    <div class="char-info-box"><span class="english-name">Aoyagi Touya</span></div>
+                    <span class="japanese-name">青柳 冬弥</span>
+                </div>
+            </div>
+            <div class="char-card" onclick="showProfile('mafuyu', '#8889CC80')">
+                <div class="char-overlay" style="background-color: #8889CC;"></div>
+                <img src="https://i.postimg.cc/FHB50V6R/Mafuyu_Image.png?text=Asahina-Mafuyu" class="char-image">
+                <div class="char-names-container">
+                    <div class="char-info-box"><span class="english-name">Asahina Mafuyu</span></div>
+                    <span class="japanese-name">朝比奈 まふゆ</span>
+                </div>
+            </div>
+            <div class="char-card" onclick="showProfile('shizuku', '#A7E2DF80')">
+                <div class="char-overlay" style="background-color: #A7E2DF;"></div>
+                <img src="https://i.postimg.cc/9fw3bq3d/shizuku_Image.png?text=Hinomori-Shizuku" class="char-image">
+                <div class="char-names-container">
+                    <div class="char-info-box"><span class="english-name">Hinomori Shizuku</span></div>
+                    <span class="japanese-name">日野森 雫</span>
+                </div>
+            </div>
+            <div class="char-card" onclick="showProfile('tsukasa', '#FFD55D80')">
+                <div class="char-overlay" style="background-color: #FFD55D;"></div>
+                <img src="https://i.postimg.cc/GpWW5hrS/Tsukasa_Image.png?text=Tenma-Tsukasa" class="char-image">
+                <div class="char-names-container">
+                    <div class="char-info-box"><span class="english-name">Tenma Tsukasa</span></div>
+                    <span class="japanese-name">天馬 司</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- VS Logo -->
+        <div class="header-icon no-click vs-logo">
+            <img src="https://static.wikia.nocookie.net/projectsekai/images/4/4b/Virtualsingerlogo.png" alt="VIRTUAL SINGER Logo">
+        </div>
+
+        <!-- VIRTUAL SINGERS -->
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-4">
+            <div class="char-card" onclick="showProfile('miku', '#33ccbb80')">
+                <div class="char-overlay" style="background-color: #33ccbb;"></div>
+                <img src="https://i.postimg.cc/QCx06RB0/Miku_Image.png?text=Hatsune-Miku" class="char-image">
+                <div class="char-names-container">
+                    <div class="char-info-box"><span class="english-name">Hatsune Miku</span></div>
+                    <span class="japanese-name">初音ミク</span>
+                </div>
+            </div>
+            <div class="char-card" onclick="showProfile('rin', '#ffcc1180')">
+                <div class="char-overlay" style="background-color: #ffcc11;"></div>
+                <img src="https://i.postimg.cc/hPv2VRR7/Rin_Image.png?text=Kagamine-Rin" class="char-image">
+                <div class="char-names-container">
+                    <div class="char-info-box"><span class="english-name">Kagamine Rin</span></div>
+                    <span class="japanese-name">鏡音リン</span>
+                </div>
+            </div>
+            <div class="char-card" onclick="showProfile('len', '#ffee1180')">
+                <div class="char-overlay" style="background-color: #ffee11;"></div>
+                <img src="https://i.postimg.cc/8CR4T1Lg/Len_Image.png/300x600?text=Kagamine-Len" class="char-image">
+                <div class="char-names-container">
+                    <div class="char-info-box"><span class="english-name">Kagamine Len</span></div>
+                    <span class="japanese-name">鏡音レン</span>
+                </div>
+            </div>
+            <div class="char-card" onclick="showProfile('luka', '#ffbbcc80')">
+                <div class="char-overlay" style="background-color: #ffbbcc;"></div>
+                <img src="https://i.postimg.cc/h4yrDZQP/Luka_Image.png?text=Megurine-Luka" class="char-image">
+                <div class="char-names-container">
+                    <div class="char-info-box"><span class="english-name">Megurine Luka</span></div>
+                    <span class="japanese-name">巡音ルカ</span>
+                </div>
+            </div>
+            <div class="char-card" onclick="showProfile('meiko', '#dd444480')">
+                <div class="char-overlay" style="background-color: #dd4444;"></div>
+                <img src="https://i.postimg.cc/x1HyP0xN/MEIKO_Image.png?text=MEIKO" class="char-image">
+                <div class="char-names-container">
+                    <div class="char-info-box"><span class="english-name">MEIKO</span></div>
+                    <span class="japanese-name">MEIKO</span>
+                </div>
+            </div>
+            <div class="char-card" onclick="showProfile('kaito', '#3366cc80')">
+                <div class="char-overlay" style="background-color: #3366cc;"></div>
+                <img src="https://i.postimg.cc/N0c8JWSL/KAITO_Image.png?text=KAITO" class="char-image">
+                <div class="char-names-container">
+                    <div class="char-info-box"><span class="english-name">KAITO</span></div>
+                    <span class="japanese-name">KAITO</span>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+    <!-- Profile Display -->
+    <main class="max-w-6xl mx-auto mb-20">
+        <div id="nav-area" class="hidden text-center md:text-left">
+            <div class="return-btn" onclick="returnToGrid()">← Return</div>
+        </div>
+
+        <!-- HOME -->
+        <div id="home" class="profile-container">
+            <div class="the-bg-thing p-6 md:p-10 flex flex-col md:flex-row gap-10" style="border-left: 10px solid #AA9FD0;">
+                <div class="w-full md:w-1/3">
+                    <div class="character-art-preview border-4 border-gray-50 shadow-xl" onclick="openLightbox('https://i.postimg.cc/rySy17cs/Vibrant_Twilight.png', 'Vibrant Twilight')">
+                        <img src="https://i.postimg.cc/rySy17cs/Vibrant_Twilight.png" class="character-art-full">
+                    </div>
+
+                    <div class="profile-info">
+                        <div class="app-row app-header">
+                            <div class="app-cell" style="grid-column: span 2;">Unit Information</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Logo</div>
+                            <div class="app-cell"><img src="https://i.postimg.cc/Gt1L0xPK/Vibrant_Twilight_Logo.png" style="max-width: 80px;"></div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Members</div>
+                            <div class="app-cell">
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="yeetus" style="color: #5DA4EE;" onclick="showProfile('aoyagi-touya', '#5DA4EE80')">Touya</span>, 
+                                    <span class="yeetus" style="color: #8889CC;" onclick="showProfile('mafuyu', '#8889CC80')">Mafuyu</span>, 
+                                    <span class="yeetus" style="color: #A7E2DF;" onclick="showProfile('shizuku', '#A7E2DF80')">Shizuku</span>, 
+                                    <span class="yeetus" style="color: #FFD55D;" onclick="showProfile('tsukasa', '#FFD55D80')">Tsukasa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Unit Color</div>
+                            <div class="app-cell flex items-center gap-2">
+                                <div style="width: 12px; height: 12px; border-radius: 50%; background: #AA9FD0;"></div>
+                                #AA9FD0<br>
+                                Elliana
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="w-full md:w-2/3">
+                    <h2 class="text-5xl font-black mb-1 uppercase tracking-tighter">Vibrant Twilight</h2>
+                    <div class="mb-8">
+                        <p class="text-gray-600 leading-relaxed"><b>Vibrant Twilight</b>, often abbreviated to <b>VT</b>, is an online band consisting of four friends.</p>
+                    </div>
+
+                    <div class="mb-8">
+                        <span class="section-label">BACKGROUND</span>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            <span class="yeetus" style="color: #5DA4EE;" onclick="showProfile('aoyagi-touya', '#5DA4EE80')">Aoyagi Touya</span>, <span class="yeetus" style="color: #A7E2DF;" onclick="showProfile('shizuku', '#A7E2DF80')">Hinomori Shizuku</span>, and <span class="yeetus" style="color: #FFD55D;" onclick="showProfile('tsukasa', '#FFD55D80')">Tenma Tsukasa</span> had been friends since childhood, however, they didn't often sing together, Tsukasa being unable to sing at all. The trio met <span class="yeetus" style="color: #8889CC;" onclick="showProfile('mafuyu', '#8889CC80')">Asahina Mafuyu</span> in high school, who was the one who initially proposed the idea of becoming a band to Touya and Shizuku, the three inviting Tsukasa to join later on. Throughout the year, Tsukasa became more distant, and Mafuyu eventually had to move away, leaving only Touya and Shizuku.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            One day, as Touya aimlessly scrolled through his phone, reminiscing about the time he had spent with the others, he found a file named "Untitled." He had initially planned to delete the file, as it hadn't been uncommon for him to find files with the same name, but his hand had slipped, and he had accidentally played the file, which had transported him to the Cottage Sekai. He had met <span style='color:#3CB; font-weight: bold;'>Hatsune Miku</span> and <span style='color:#FE1; font-weight: bold;'>Kagamine Len</span>, who had invited him for a chat.
+                        </p>
+                    </div>
+
+                  <div class="mb-8">
+                        <span class="section-label">SEKAI</span>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Instert something here
+                        </p>
+                    </div>
+
+                    <div class="mb-8">
+                      <span class="section-label">MORE INFORMATION</span>
+                      <ul class="text-gray-600 leading-relaxed list-disc ml-5">
+                        <li>Aside from Miku, Len and <span style='color:#FC1; font-weight: bold;'>Rin</span> were the first VIRTUAL SINGERS to be introduced.</li>
+                        <li>Mafuyu is the only member of Vibrant Twilight who currently does not attend Kamiyama High School.</li>
+                        <li>Despite knowing each other since sixth grade, Tsukasa still refers to Touya as "Touya-senpai", while Mafuyu and Shizuku occasionally call him that to throw him off.</li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Touya Profile -->
+        <div id="aoyagi-touya" class="profile-container">
+            <div class="the-bg-thing p-6 md:p-10 flex flex-col md:flex-row gap-10" style="border-left: 10px solid #5DA4EE;">
+                
+                <div class="w-full md:w-1/3">
+                    <div class="character-art-preview border-4 border-gray-50 shadow-2xl" onclick="openLightbox('https://i.postimg.cc/JnRyZ8v1/Toya-Smile.png', 'Touya Tired Smile')">
+                        <img src="https://i.postimg.cc/JnRyZ8v1/Toya-Smile.png" class="character-art-full">
+                    </div>
+
+                    <div class="profile-info">
+                        <div class="app-row app-header">
+                            <div class="app-cell" style="grid-column: span 2;">Profile</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Gender</div>
+                            <div class="app-cell">Trans Boyflux</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Pronouns</div>
+                            <div class="app-cell">He/They/It</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Birthday</div>
+                            <div class="app-cell">May 25</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Height</div>
+                            <div class="app-cell">5'7"</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Hobbies</div>
+                            <div class="app-cell">Gaming, Art, Writing</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Specialty</div>
+                            <div class="app-cell">Violin, Programming</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Likes</div>
+                            <div class="app-cell">Noodles</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Least Fav Food</div>
+                            <div class="app-cell">Honey, Onions</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Dislikes</div>
+                            <div class="app-cell">School, Public speaking</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-cell stat-label-cell">Image Color</div>
+                            <div class="app-cell flex items-center gap-2">
+                                <div style="width: 12px; height: 12px; border-radius: 50%; background: #5DA4EE;"></div>
+                                #5DA4EE<br>
+                                Adonis
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <div class="appellations">
+                            <div class="app-row app-header">
+                                <div class="app-cell" style="grid-column: span 2;">Appellations</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Touya</div>
+                                <div class="app-cell">Akito, Kotaro, Shizuku</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Touya-kun</div>
+                                <div class="app-cell">Mafuyu, Mizuki</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Touya-senpai</div>
+                                <div class="app-cell">Tsukasa</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Aoyagi</div>
+                                <div class="app-cell">Riho</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Aoyagi-kun</div>
+                                <div class="app-cell">An, Emu, Ena, Kohane, Rui</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Aoyagi-san</div>
+                                <div class="app-cell">Airi, Diluc, Honami, Ichika, Minori</div>
+                            </div>
+                            <div class="app-row">
+                                <div class="app-cell">Tuuya</div>
+                                <div class="app-cell">Haruka, Nene</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-2/3">
+                    <h2 class="text-5xl font-black mb-1 uppercase tracking-tighter">Aoyagi Touya</h2>
+                    <p class="font-bold mb-4" style="color: #5DA4EE;">LEADER / ILLUSTRATOR</p>
+
+                    <div class="quotie">
+                        “ It must be nice, having a dream to work towards. ”
+                    </div>
+
+                    <div class="mb-8">
+                        <span class="section-label">BACKGROUND</span>
+                        <p class="text-gray-600 leading-relaxed">
+                          Touya, <span class="yeetus" style="color: #A7E2DF;" onclick="showProfile('shizuku', '#A7E2DF80')">Shizuku</span>, and <span class="yeetus" style="color: #FFD55D;" onclick="showProfile('tsukasa', '#FFD55D80')">Tsukasa</span> had been friends since childhood, though their time was limited to school. In middle school, Touya became friends with a group called <span style="color: #6D3F5B; font-weight: bold;">Darkilight</span>, but they caused Touya's relationship with Shizuku to become strained, especially after a conflict between Shizuku and <span style="color: #BB4B3E; font-weight: bold;">Diluc</span>, a former close friend of Darkilight's. Around the same time, Tsukasa began to grow more distant.
+                        </p>
+                      <p class="text-gray-600 leading-relaxed mt-4">
+                        In an attempt to fix their friendship, Touya decided to push away Darkilight and invited Tsukasa out more, but his efforts were met with little success. After Darkilight faced some internal conflict and eventually disbanded, Touya attempted to reconnect with two of its former members, <span style="color: #E4A8CA; font-weight: bold;">Mizuki</span> and <span style="color: #CC659C; font-weight: bold;">Kohane</span>. However, their bad reputation among Touya's other friends made it difficult to connect with Touya's other friends. As a result, Touya, Shizuku, and <span class="yeetus" style="color: #8889CC;" onclick="showProfile('mafuyu', '#8889CC80')">Mafuyu</span> invited Tsukasa to join Vibrant Twilight instead. Despite their efforts, Tsukasa remained distant, their bond further straining when Mafuyu moved away, leaving only Touya and Shizuku. Things slowly improved between them when Touya discovered the Cottage Sekai.
+                        </p>
+                    </div>
+
+                    <div class="mb-8">
+                        <span class="section-label">APPEARANCE</span>
+                        <div>
+                            <p>Touya has sharp grey eyes and a mole under the corner of his left eye. His hair is shoulder-length and bicolored, the right side a dark blue, the left a light blue, his face framed by a strand of hair on either side.</p>
+                            <span class="sub-label" style="border-color: #5DA4EE;">Casual Outfit</span>
+                            <p class="text-gray-600 leading-relaxed mt-2">
+                                He wears a tucked black t-shirt underneath a pink-and-purple jacket and black cargo pants. Occassionally, he wears a keychain on his belt. He wears a Cinnamoroll necklace that matches with Shizuku, and a silver star necklace that matches with Shizuku and Mafuyu. He wears black-and-white sneakers. He also wears a blue bracelet with a star charm on his left wrist and a blue bracelet spelling out his name on his left wrist, both from Shizuku. He wears a blue BFF bracelet and a black and green bracelet with "BUTTERCUP" spelled out and a Buttercup charm on it, also matching with Mafuyu and Shizuku. His earrings are different, with the right one having a Bubbles charm and the left attached to a chain with a Blossom charm.<br><br>In winter, he wears a black, long-sleeved shirt under his t-shirt, with a pale yellow hoodie over the t-shirt. His jacket is still the outermost layer.</p>
+                            <span class="sub-label" style="border-color: #5DA4EE;">Unit Outfit</span>
+                            <p class="text-gray-600 leading-relaxed mt-2">Work in progress...</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <span class="section-label">PERSONALITY</span>
+                        <p class="text-gray-600 leading-relaxed">
+                            Touya is an introvert who struggles with interacting with others; however, he becomes blunt and sarcastic around those he is comfortable with. Despite his sharp tongue, he cares deeply about his friends. A pessimist with low self-esteem, Touya often questions the value of his efforts, especially after years of dedication with little recognition. He is envious of his friends and small creators who receive more attention than him. He is not forgiving, often holding grudges against people who have hurt him or his friends, but he doesn't show it.
+                        </p>
+                    </div>
+
+                    <div class="mb-8">
+                      <span class="section-label">MORE INFORMATION</span>
+                      <ul class="text-gray-600 leading-relaxed list-disc ml-5">
+                        <li>His weakest school subjects are math and physics.</li>
+                        <li>He always stays up late to work on things, as he gets sidetracked or interrupted during the day, leaving them constantly tired. He ignores his exhaustion, however, pushing themself until he falls asleep while working on something.</li>
+                        <li>Despite having glasses, he rarely ever wears them, as they give him a headache and make his eyes dry.</li>
+                        <li>He played violin for four years before quitting.</li>
+                        <li>Rather than energizing him, caffeine makes him tired, with energy drinks giving him chest pain and causing him to shake as well. Despite this, he frequently drinks soda. </li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Placeholder -->
+        <div id="profile-placeholder" class="profile-container">
+            <div class="the-bg-thing p-20 text-center italic text-gray-400">
+                <p class="text-2xl mb-4">CODING IS HARD PLEASE HeLP</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const grid = document.getElementById('selection-grid');
+        const nav = document.getElementById('nav-area');
+        const profiles = document.querySelectorAll('.profile-container');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const defaultBg = 'rgba(42, 39, 51, 1)';
+
+        function showProfile(id, bgColor) {
+            document.body.style.backgroundColor = bgColor || defaultBg;
+            grid.classList.add('hidden');
+            nav.classList.remove('hidden');
+            profiles.forEach(p => p.classList.remove('active'));
+            
+            const target = document.getElementById(id);
+            if (target) {
+                target.classList.add('active');
+            } else {
+                document.getElementById('profile-placeholder').classList.add('active');
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function returnToGrid() {
+            document.body.style.backgroundColor = defaultBg;
+            profiles.forEach(p => p.classList.remove('active'));
+            nav.classList.add('hidden');
+            grid.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openLightbox(src, captionText) {
+            if (lightboxImg && lightboxCaption) {
+                lightboxImg.src = src;
+                lightboxCaption.textContent = captionText || "Full Image View";
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; 
+            }
+        }
+
+        function closeLightbox() {
+            if (lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
